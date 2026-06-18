@@ -1,0 +1,54 @@
+:root {
+    --brand-purple: #6f42c1; /* Tweak to match your exact purple shade */
+    --brand-teal: #0d9488;   /* Clean teal shade */
+    --nav-dark: #1e293b;     /* Dark slate for nav items text */
+}
+
+.brand-icon {
+    font-size: 2.2rem;
+    color: var(--brand-purple);
+}
+
+.brand-text-wrapper {
+    line-height: 1.1;
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+}
+
+.text-purple {
+    color: var(--brand-purple);
+}
+
+.text-teal {
+    color: var(--brand-teal);
+}
+
+.brand-tagline {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 400;
+}
+
+.navbar-nav .nav-link {
+    color: var(--nav-dark) !important;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-icon {
+    font-size: 1.25rem;
+    color: var(--nav-dark);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--brand-purple) !important;
+}
+
+.navbar-nav .nav-link:hover .nav-icon {
+    color: var(--brand-purple);
+}

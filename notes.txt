@@ -1,0 +1,12 @@
+Here is just a rough description odf what my Project is gonna be doing:
+1. Blue Print
+    Home Page
+    Events Page
+    Events Detail Page
+    Clubs and Societies Page
+    Clubs and Societies Details Page
+    Student Marketplace Page
+    Opportunities Page
+    Study groups Page
+    Campus News Page
+    About and Contact Page
