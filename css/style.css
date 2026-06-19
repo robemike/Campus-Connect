@@ -52,3 +52,113 @@
 .navbar-nav .nav-link:hover .nav-icon {
     color: var(--brand-purple);
 }
+
+
+/* HERO SECTION AND FEATURE CARDS STYLING */
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Color Variables / Accents */
+.text-teal { color: #00bfa5; }
+.text-green { color: #52c41a; }
+
+.hero-section {
+    background: linear-gradient(135deg, #3d1475 0%, #1a0636 100%);
+    /* Replace with an actual background overlay image if needed */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0 160px 0; /* Extra bottom padding so cards can overlap */
+    z-index: 1;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.btn-explore {
+    background-color: #00bfa5;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+}
+.btn-explore:hover {
+    background-color: #00a38d;
+    color: #ffffff;
+}
+
+.btn-outline-white {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    width: 100px; /* Matching the empty white pill shape in the image */
+}
+
+.features-section {
+    margin-top: -100px; /* Pulls the grid up into the purple hero space */
+    z-index: 2;
+    padding-bottom: 60px;
+}
+
+.feature-card {
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+}
+
+.feature-card .card-text {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.icon-wrapper {
+    background: rgba(255, 255, 255, 0.15);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.3rem;
+}
+
+.list-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.card-purple {
+    background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+}
+.card-green {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+}
+.card-teal {
+    background: linear-gradient(135deg, #00acc1 0%, #006064 100%);
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+.badge-purple { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+.badge-green { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+.badge-teal { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
