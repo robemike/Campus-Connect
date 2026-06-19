@@ -102,7 +102,8 @@ body {
 }
 
 .features-section {
-    margin-top: -100px; /* Pulls the grid up into the purple hero space */
+    position: relative;
+    margin-top: -100px;
     z-index: 2;
     padding-bottom: 60px;
 }
