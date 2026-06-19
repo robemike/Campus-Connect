@@ -1,7 +1,7 @@
 :root {
-    --brand-purple: #6f42c1; /* Tweak to match your exact purple shade */
-    --brand-teal: #0d9488;   /* Clean teal shade */
-    --nav-dark: #1e293b;     /* Dark slate for nav items text */
+    --brand-purple: #6f42c1; 
+    --brand-teal: #0d9488;   
+    --nav-dark: #1e293b;    
 }
 
 .brand-icon {
@@ -56,7 +56,6 @@
 
 /* HERO SECTION AND FEATURE CARDS STYLING */
 
-/* Base Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #ffffff;
@@ -64,16 +63,14 @@ body {
     padding: 0;
 }
 
-/* Color Variables / Accents */
 .text-teal { color: #00bfa5; }
 .text-green { color: #52c41a; }
 
 .hero-section {
     background: linear-gradient(135deg, #3d1475 0%, #1a0636 100%);
-    /* Replace with an actual background overlay image if needed */
     background-size: cover;
     background-position: center;
-    padding: 100px 0 160px 0; /* Extra bottom padding so cards can overlap */
+    padding: 100px 0 160px 0; 
     z-index: 1;
 }
 
@@ -98,7 +95,7 @@ body {
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 8px;
-    width: 100px; /* Matching the empty white pill shape in the image */
+    width: 100px; 
 }
 
 .features-section {
@@ -166,7 +163,6 @@ body {
 
 /* MARKET PLACE PREVIEW (TEASER) STYLING */
 
-/* Color Palette Variables */
 :root {
     --brand-orange: #ff6b00;
     --brand-orange-hover: #e05e00;
@@ -179,7 +175,6 @@ body {
     background-color: #ffffff;
 }
 
-/* Typography styles matching image */
 .text-navy {
     color: var(--text-navy);
 }
@@ -192,7 +187,6 @@ body {
     font-size: 1.05rem;
 }
 
-/* Primary Orange Button Style */
 .btn-orange {
     background-color: var(--brand-orange);
     color: #ffffff;
@@ -206,7 +200,6 @@ body {
     color: #ffffff;
 }
 
-/* Smaller "Buy Now" Button Style */
 .btn-orange-sm {
     background-color: var(--brand-orange);
     color: #ffffff;
@@ -221,7 +214,6 @@ body {
     color: #ffffff;
 }
 
-/* Marketplace Product Cards Setup */
 .product-card {
     border-radius: var(--card-radius) !important;
     overflow: hidden;
@@ -229,7 +221,6 @@ body {
     border-color: #eaeaea !important;
 }
 
-/* Ensures uniform image display container ratios */
 .product-card .img-container {
     width: 100%;
     height: 200px; 
@@ -257,7 +248,7 @@ body {
 }
 
 /* HAPPENING (TEASER) SECTION PART OF THE HOMEPAGE */
-/* Styling Setup Configuration */
+
 :root {
     --text-navy: #0a192f;
     --read-more-purple: #5c33b5;
@@ -279,7 +270,6 @@ body {
     font-size: 2rem;
 }
 
-/* LEFT COLUMN: Horizontal Article Cards Styling */
 .article-card {
     border-radius: 16px !important;
     overflow: hidden;
@@ -311,7 +301,6 @@ body {
     text-decoration: underline !important;
 }
 
-/* Category Badges Styling */
 .badge {
     padding: 5px 12px;
     border-radius: 12px;
@@ -321,9 +310,8 @@ body {
 .badge-purple { background-color: #f3e8ff; color: #7c3aed; }
 .badge-green { background-color: #dcfce7; color: #15803d; }
 
-/* RIGHT COLUMN: Sidebar Component Widgets Setup */
 .sidebar-container {
-    padding-top: 54px; /* Matches alignment below section heading line */
+    padding-top: 54px; 
 }
 
 .sidebar-widget {
@@ -340,7 +328,6 @@ body {
     font-size: 0.8rem;
 }
 
-/* Circular Trending Rank Numbering Indicators */
 .trend-number {
     width: 32px;
     height: 32px;
@@ -357,7 +344,6 @@ body {
 .num-teal { background-color: #e0f2fe; color: #0369a1; }
 .num-orange { background-color: #ffedd5; color: #c2410c; }
 
-/* Rounded Feature Club Thumbnails */
 .club-thumb {
     width: 44px;
     height: 44px;
@@ -365,7 +351,6 @@ body {
     object-fit: cover;
 }
 
-/* Bordered Utility Action Buttons */
 .btn-outline-join {
     border: 1px solid #e0e0e0;
     color: #333333;
@@ -377,4 +362,44 @@ body {
     background-color: #f5f5f5;
     border-color: #cccccc;
     color: #000000;
+}
+
+/* FOOTER SECTION STYLING */
+.bg-navy-dark {
+    background-color: #0d0b2e; 
+}
+
+.brand-text {
+    font-size: 1.25rem;
+    letter-spacing: 0.3px;
+}
+
+.brand-icon {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.footer-heading {
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+}
+
+.text-secondary {
+    color: #a3a1be !important; 
+}
+
+.footer-link {
+    color: #a3a1be;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+hr.border-secondary {
+    border-color: #a3a1be !important;
 }

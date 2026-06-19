@@ -12,3 +12,4 @@ loadComponent('features-container', 'components/features.html');
 loadComponent('marketplace-container', 'components/marketplace-preview.html');
 loadComponent('happening-container', 'components/happening.html');
 loadComponent('happening-container', 'components/happening.html');
+loadComponent('footer-container', 'components/footer.html');
