@@ -1,0 +1,11 @@
+function loadComponent(id, file) {
+    fetch(file)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById(id).innerHTML = data;
+    });
+}
+
+loadComponent('navbar-container', 'components/navbar.html');
+loadComponent('hero-container', 'components/hero.html');
+loadComponent('features-container', 'components/features.html');

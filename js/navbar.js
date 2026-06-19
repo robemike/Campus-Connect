@@ -1,21 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
 
-    fetch("components/navbar.html")
-        .then(response => {
+//     fetch("components/navbar.html")
+//         .then(response => {
 
-            if (!response.ok) {
-                throw new Error("Navbar could not be loaded");
-            }
+//             if (!response.ok) {
+//                 throw new Error("Navbar could not be loaded");
+//             }
 
-            return response.text();
-        })
+//             return response.text();
+//         })
 
-        .then(data => {
-            document.getElementById("navbar-container").innerHTML = data;
-        })
+//         .then(data => {
+//             document.getElementById("navbar-container").innerHTML = data;
+//         })
 
-        .catch(error => {
-            console.error(error);
-        });
+//         .catch(error => {
+//             console.error(error);
+//         });
 
-});
+// });
