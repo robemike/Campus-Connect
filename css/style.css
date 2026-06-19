@@ -1,30 +1,58 @@
+/* ===========================
+   CSS CUSTOM PROPERTIES
+   =========================== */
 :root {
-    --brand-purple: #6f42c1; 
-    --brand-teal: #0d9488;   
-    --nav-dark: #1e293b;    
+    --brand-purple: #6f42c1;
+    --brand-teal: #0d9488;
+    --brand-orange: #ff6b00;
+    --brand-orange-hover: #e05e00;
+    --nav-dark: #1e293b;
+    --text-navy: #0a192f;
+    --read-more-purple: #5c33b5;
+    --orange-accent: #ff6b00;
+    --green-accent: #2e7d32;
+    --border-soft: #eaeaea;
+    --card-radius: 16px;
+
+    /* Section Colors and separator */
+    --section-light: #f8f9fa;
+    --section-white: #ffffff;
+    --divider-orange: rgba(255, 107, 0, 0.2);
 }
 
+/* ===========================
+   BASE
+   =========================== */
+body {
+    font-family: 'Segoe UI', Roboto, Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+   UTILITY / TEXT COLORS
+   =========================== */
+.text-purple      { color: var(--brand-purple); }
+.text-teal        { color: var(--brand-teal); }
+.text-navy        { color: var(--text-navy); }
+.text-orange      { color: var(--orange-accent); }
+.text-green       { color: var(--green-accent); }
+
+/* ===========================
+   NAVBAR / BRAND
+   =========================== */
 .brand-icon {
     font-size: 2.2rem;
     color: var(--brand-purple);
 }
 
-.brand-text-wrapper {
-    line-height: 1.1;
-}
+.brand-text-wrapper { line-height: 1.1; }
 
 .brand-title {
     font-weight: 700;
     font-size: 1.6rem;
     letter-spacing: -0.5px;
-}
-
-.text-purple {
-    color: var(--brand-purple);
-}
-
-.text-teal {
-    color: var(--brand-teal);
 }
 
 .brand-tagline {
@@ -40,37 +68,24 @@
     transition: color 0.2s ease-in-out;
 }
 
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:hover .nav-icon {
+    color: var(--brand-purple) !important;
+}
+
 .nav-icon {
     font-size: 1.25rem;
     color: var(--nav-dark);
 }
 
-.navbar-nav .nav-link:hover {
-    color: var(--brand-purple) !important;
-}
-
-.navbar-nav .nav-link:hover .nav-icon {
-    color: var(--brand-purple);
-}
-
-
-/* HERO SECTION AND FEATURE CARDS STYLING */
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-}
-
-.text-teal { color: #00bfa5; }
-.text-green { color: #52c41a; }
-
+/* ===========================
+   HERO SECTION
+   =========================== */
 .hero-section {
     background: linear-gradient(135deg, #3d1475 0%, #1a0636 100%);
     background-size: cover;
     background-position: center;
-    padding: 100px 0 160px 0; 
+    padding: 100px 0 160px 0;
     z-index: 1;
 }
 
@@ -80,12 +95,16 @@ body {
     line-height: 1.6;
 }
 
+/* ===========================
+   HERO BUTTONS
+   =========================== */
 .btn-explore {
     background-color: #00bfa5;
     color: #ffffff;
     border: none;
     border-radius: 8px;
 }
+
 .btn-explore:hover {
     background-color: #00a38d;
     color: #ffffff;
@@ -95,9 +114,12 @@ body {
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 8px;
-    width: 100px; 
+    width: 100px;
 }
 
+/* ===========================
+   FEATURE CARDS
+   =========================== */
 .features-section {
     position: relative;
     margin-top: -100px;
@@ -112,18 +134,14 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
+
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-.feature-card h3 {
-    font-size: 1.5rem;
-}
-
-.feature-card .card-text {
-    font-size: 0.95rem;
-    opacity: 0.85;
-}
+.feature-card h3       { font-size: 1.5rem; }
+.feature-card .card-text { font-size: 0.95rem; opacity: 0.85; }
 
 .icon-wrapper {
     background: rgba(255, 255, 255, 0.15);
@@ -141,51 +159,32 @@ body {
     font-weight: 500;
 }
 
-.card-purple {
-    background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
-}
-.card-green {
-    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-}
-.card-teal {
-    background: linear-gradient(135deg, #00acc1 0%, #006064 100%);
-}
+.card-purple { background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%); }
+.card-green  { background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); }
+.card-teal   { background: linear-gradient(135deg, #00acc1 0%, #006064 100%); }
 
+/* ===========================
+   BADGES (shared base + variants)
+   =========================== */
 .badge {
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 5px 12px;
+    border-radius: 12px;
     font-weight: 500;
     font-size: 0.75rem;
 }
+
 .badge-purple { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
-.badge-green { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
-.badge-teal { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+.badge-green  { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+.badge-teal   { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
 
-/* MARKET PLACE PREVIEW (TEASER) STYLING */
+.badge-purple-soft { background-color: #f3e8ff; color: #7c3aed; }
+.badge-green-soft  { background-color: #dcfce7; color: #15803d; }
 
-:root {
-    --brand-orange: #ff6b00;
-    --brand-orange-hover: #e05e00;
-    --text-navy: #0a192f;
-    --card-radius: 16px;
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #ffffff;
-}
-
-.text-navy {
-    color: var(--text-navy);
-}
-
-.marketplace-title {
-    font-size: 2rem;
-}
-
-.marketplace-subtitle {
-    font-size: 1.05rem;
-}
+/* ===========================
+   MARKETPLACE SECTION
+   =========================== */
+.marketplace-title    { font-size: 2rem; }
+.marketplace-subtitle { font-size: 1.05rem; }
 
 .btn-orange {
     background-color: var(--brand-orange);
@@ -194,7 +193,7 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.btn-orange:hover, 
+.btn-orange:hover,
 .btn-orange:focus {
     background-color: var(--brand-orange-hover);
     color: #ffffff;
@@ -218,12 +217,18 @@ body {
     border-radius: var(--card-radius) !important;
     overflow: hidden;
     background-color: #ffffff;
-    border-color: #eaeaea !important;
+    border: 2px solid var(--border-soft) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: var(--brand-orange) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
 .product-card .img-container {
     width: 100%;
-    height: 200px; 
+    height: 200px;
     overflow: hidden;
     background-color: #f7f7f7;
 }
@@ -232,46 +237,22 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.product-card .card-title {
-    font-size: 1.15rem;
-}
+.product-card:hover .img-container img { transform: scale(1.08); }
 
-.product-card .seller-text {
-    font-size: 0.9rem;
-}
+.product-card .card-title  { font-size: 1.15rem; }
+.product-card .seller-text { font-size: 0.9rem; }
+.product-card .price-text  { font-size: 1.35rem; color: var(--brand-orange); }
 
-.product-card .price-text {
-    font-size: 1.35rem;
-    color: var(--brand-orange);
-}
-
-/* HAPPENING (TEASER) SECTION PART OF THE HOMEPAGE */
-
-:root {
-    --text-navy: #0a192f;
-    --read-more-purple: #5c33b5;
-    --orange-accent: #ff6b00;
-    --green-accent: #2e7d32;
-    --border-soft: #eaeaea;
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #fafafa;
-}
-
-.text-navy { color: var(--text-navy); }
-.text-orange { color: var(--orange-accent); }
-.text-green { color: var(--green-accent); }
-
-.section-main-title {
-    font-size: 2rem;
-}
+/* ===========================
+   HAPPENING SECTION
+   =========================== */
+.section-main-title { font-size: 2rem; }
 
 .article-card {
-    border-radius: 16px !important;
+    border-radius: var(--card-radius) !important;
     overflow: hidden;
     background-color: #ffffff;
     border: 1px solid var(--border-soft) !important;
@@ -297,36 +278,19 @@ body {
     color: var(--read-more-purple);
     font-size: 0.9rem;
 }
-.read-more-link:hover {
-    text-decoration: underline !important;
-}
 
-.badge {
-    padding: 5px 12px;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 0.75rem;
-}
-.badge-purple { background-color: #f3e8ff; color: #7c3aed; }
-.badge-green { background-color: #dcfce7; color: #15803d; }
+.read-more-link:hover { text-decoration: underline !important; }
 
-.sidebar-container {
-    padding-top: 54px; 
-}
+.sidebar-container { padding-top: 54px; }
 
 .sidebar-widget {
-    border-radius: 16px !important;
+    border-radius: var(--card-radius) !important;
     background-color: #ffffff;
     border-color: var(--border-soft) !important;
 }
 
-.small-title {
-    font-size: 0.95rem;
-}
-
-.extra-small {
-    font-size: 0.8rem;
-}
+.small-title  { font-size: 0.95rem; }
+.extra-small  { font-size: 0.8rem; }
 
 .trend-number {
     width: 32px;
@@ -339,9 +303,10 @@ body {
     font-size: 0.85rem;
     flex-shrink: 0;
 }
+
 .num-purple { background-color: #f3e8ff; color: #7c3aed; }
-.num-green { background-color: #dcfce7; color: #15803d; }
-.num-teal { background-color: #e0f2fe; color: #0369a1; }
+.num-green  { background-color: #dcfce7; color: #15803d; }
+.num-teal   { background-color: #e0f2fe; color: #0369a1; }
 .num-orange { background-color: #ffedd5; color: #c2410c; }
 
 .club-thumb {
@@ -358,23 +323,24 @@ body {
     border-radius: 8px;
     transition: all 0.2s ease;
 }
+
 .btn-outline-join:hover {
     background-color: #f5f5f5;
     border-color: #cccccc;
     color: #000000;
 }
 
-/* FOOTER SECTION STYLING */
-.bg-navy-dark {
-    background-color: #0d0b2e; 
-}
+/* ===========================
+   FOOTER
+   =========================== */
+.bg-navy-dark { background-color: #0d0b2e; }
 
 .brand-text {
     font-size: 1.25rem;
     letter-spacing: 0.3px;
 }
 
-.brand-icon {
+.bg-navy-dark .brand-icon {
     font-size: 1.4rem;
     color: #ffffff;
 }
@@ -384,9 +350,7 @@ body {
     letter-spacing: 0.2px;
 }
 
-.text-secondary {
-    color: #a3a1be !important; 
-}
+.text-secondary { color: #a3a1be !important; }
 
 .footer-link {
     color: #a3a1be;
@@ -400,6 +364,4 @@ body {
     text-decoration: none;
 }
 
-hr.border-secondary {
-    border-color: #a3a1be !important;
-}
+hr.border-secondary { border-color: #a3a1be !important; }
