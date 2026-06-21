@@ -1,0 +1,54 @@
+
+
+:root {
+    --hero-purple-start: #7e22ce; 
+    --hero-purple-end: #4c1d95;   
+    --pill-bg-alpha: rgba(255, 255, 255, 0.2);
+}
+
+.events-hero-section {
+    background: linear-gradient(135deg, var(--hero-purple-start) 0%, var(--hero-purple-end) 100%);
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-upcoming {
+    background-color: var(--pill-bg-alpha);
+    padding: 6px 16px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+
+.events-hero-section .hero-description {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.btn-white-action {
+    background-color: #ffffff;
+    color: #4c1d95;
+    border: 1px solid #ffffff;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-white-action:hover {
+    background-color: #f3e8ff;
+    color: #4c1d95;
+}
+.btn-white-action i {
+    font-size: 1.1rem;
+}
+
+.btn-outline-action {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.btn-outline-action:hover {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
