@@ -14,3 +14,4 @@ loadComponent('happening-container', 'components/happening.html');
 loadComponent('happening-container', 'components/happening.html');
 loadComponent('footer-container', 'components/footer.html');
 loadComponent('events-hero-container', 'components/events-hero-section.html');
+loadComponent('events-catalog-container', 'components/events-catalog.html');
