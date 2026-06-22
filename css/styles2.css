@@ -1,192 +1,144 @@
-
-
+/* ===========================
+   DESIGN TOKENS
+   =========================== */
 :root {
-    --hero-purple-start: #7e22ce; 
-    --hero-purple-end: #4c1d95;   
+    --brand-orange: ;       
+    --brand-orange-hover: ;    
+    --brand-purple: #8b5cf6;
+    --brand-purple-hover: #7c3aed;
+
+    --hero-purple-start: #7e22ce;
+    --hero-purple-end: #4c1d95;
+    --hero-green-start: #22c55e;
+    --hero-green-end: #15803d;
+
+    --text-navy: #0a192f;
+    --text-navy-slate: #334155;
+    --pill-bg-gray: #f1f5f9;
     --pill-bg-alpha: rgba(255, 255, 255, 0.2);
+    --border-soft: #eaeaea;
+    --card-radius: 16px;
 }
 
-.events-hero-section {
-    background: linear-gradient(135deg, var(--hero-purple-start) 0%, var(--hero-purple-end) 100%);
+/* ===========================
+   BASE
+   =========================== */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fdfdfd;
+}
+
+.text-navy  { color: var(--text-navy); }
+.icon-purple { color: var(--brand-purple); }
+
+
+/* ===========================
+   HERO SECTIONS 
+   =========================== */
+.events-hero-section,
+.clubs-hero-section {
     padding-top: 70px !important;
     padding-bottom: 70px !important;
     position: relative;
     overflow: hidden;
 }
 
-.badge-upcoming {
+.events-hero-section {
+    background: linear-gradient(135deg, var(--hero-purple-start) 0%, var(--hero-purple-end) 100%);
+}
+
+.clubs-hero-section {
+    background: linear-gradient(135deg, var(--hero-green-start) 0%, var(--hero-green-end) 100%);
+    padding-top: 75px !important;  
+    padding-bottom: 75px !important;
+}
+
+.events-hero-section .hero-description,
+.clubs-hero-section .hero-description {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.clubs-hero-section .hero-description { opacity: 0.92; }
+
+
+/* ===========================
+   HERO BADGES / PILLS
+   =========================== */
+.badge-upcoming,
+.badge-communities {
     background-color: var(--pill-bg-alpha);
     padding: 6px 16px;
     border-radius: 50px;
     backdrop-filter: blur(4px);
 }
 
-.events-hero-section .hero-description {
-    font-size: 1.15rem;
-    opacity: 0.9;
-    line-height: 1.6;
-}
 
-.btn-white-action {
-    background-color: #ffffff;
-    color: #4c1d95;
-    border: 1px solid #ffffff;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-.btn-white-action:hover {
-    background-color: #f3e8ff;
-    color: #4c1d95;
-}
-.btn-white-action i {
-    font-size: 1.1rem;
-}
+/* ===========================
+   BUTTONS
+   =========================== */
 
-.btn-outline-action {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-.btn-outline-action:hover {
-    border-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-}
-
-
-
-/* Color Accent Configurations */
-:root {
-    --text-navy: #0a192f;
-    --brand-purple: #8b5cf6;
-    --brand-purple-hover: #7c3aed;
-    --pill-bg-gray: #f1f5f9;
-    --border-soft: #eaeaea;
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #fdfdfd;
-}
-
-/* Base Headings & Helpers */
-.text-navy {
-    color: var(--text-navy);
-}
-
-.icon-purple {
-    color: var(--brand-purple);
-}
-
-/* Category Selection Bar Navigation styling */
-.filter-pills-wrapper {
-    background-color: var(--pill-bg-gray);
-    display: inline-flex;
-}
-
-.filter-pill {
+.btn-orange,
+.btn-orange-sm,
+.btn-purple,
+.btn-white-action,
+.btn-outline-action,
+.btn-search-action,
+.btn-outline-secondary-custom {
     border: none;
-    background-color: transparent;
-    color: #475569;
-    padding: 8px 20px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: 12px;
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-.filter-pill:hover {
-    color: var(--text-navy);
-    background-color: rgba(255, 255, 255, 0.5);
+.btn-orange {
+    background-color: var(--brand-orange);
+    color: #ffffff;
+}
+.btn-orange:hover,
+.btn-orange:focus {
+    background-color: var(--brand-orange-hover);
+    color: #ffffff;
 }
 
-.filter-pill.active {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+.btn-orange-sm {
+    background-color: var(--brand-orange);
+    color: #ffffff;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+}
+.btn-orange-sm:hover {
+    background-color: var(--brand-orange-hover);
+    color: #ffffff;
 }
 
-/* Master Event Layout Structural Card Modifications */
-.event-card {
-    border-radius: 16px !important;
-    overflow: hidden;
-    background-color: #ffffff;
-    border: 1px solid var(--border-soft) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Unique Boundary State Accent for Featured Content Items */
-.event-card.featured {
-    border: 2px solid var(--brand-purple) !important;
-}
-
-.event-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* Image Container Frame Handling */
-.event-card .image-wrapper {
-    min-height: 240px;
-    background-color: #f8fafc;
-}
-
-.event-card .image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Custom Image Top Layout Badges */
-.badge-featured {
-    background-color: #a855f7;
-    font-size: 0.75rem;
-    padding: 6px 12px;
-    font-weight: 600;
-}
-
-.badge-category {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(4px);
-    font-size: 0.75rem;
-    padding: 6px 14px;
-    font-weight: 500;
-}
-
-/* Event Metadata Label Typography Settings */
-.meta-grid .meta-label {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: -2px;
-}
-
-.meta-grid .meta-value {
-    font-size: 0.95rem;
-}
-
-/* Button UI Components Configuration */
 .btn-purple {
     background-color: var(--brand-purple);
     color: #ffffff;
-    border: none;
-    transition: background-color 0.2s ease;
 }
-
 .btn-purple:hover {
     background-color: var(--brand-purple-hover);
     color: #ffffff;
 }
 
-.btn-outline-secondary-custom {
+.btn-white-action {
+    background-color: #ffffff;
+    color: #4c1d95;
+    border: 1px solid #ffffff !important;
+}
+.btn-white-action:hover {
+    background-color: #f3e8ff;
+    color: #4c1d95;
+}
+.btn-white-action i { font-size: 1.1rem; }
+
+.btn-outline-action {
     background-color: transparent;
-    color: #1e293b;
-    border: 1px solid #cbd5e1;
-    transition: all 0.2s ease;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+.btn-outline-action:hover {
+    border-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
-.btn-outline-secondary-custom:hover {
-    background-color: #f8fafc;
-    border-color: #94a3b8;
-    color: #000000;
-}

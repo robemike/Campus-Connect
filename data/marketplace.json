@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "MacBook Pro 2024",
+    "seller": "Sarah J.",
+    "price": "$1,200",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80",
+    "alt": "MacBook Pro 2024",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "title": "Calculus Textbook",
+    "seller": "Mike T.",
+    "price": "$45",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80",
+    "alt": "Calculus Textbook",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "title": "Photography Session",
+    "seller": "Emma K.",
+    "price": "$30/hr",
+    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80",
+    "alt": "Photography Session",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "title": "Desk Lamp",
+    "seller": "Alex R.",
+    "price": "$20",
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
+    "alt": "Desk Lamp",
+    "link": "#"
+  }
+]
