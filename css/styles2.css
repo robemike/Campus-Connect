@@ -142,3 +142,68 @@ body {
     color: #ffffff;
 }
 
+
+:root {
+    --hero-orange-start: #ff7e15; 
+    --hero-orange-end: #e64a00;   
+    --pill-orange-alpha: rgba(255, 255, 255, 0.25);
+    --input-fill-gray: #f1f5f9;
+}
+
+.marketplace-hero {
+    background: linear-gradient(135deg, var(--hero-orange-start) 0%, var(--hero-orange-end) 100%);
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-marketplace {
+    background-color: var(--pill-orange-alpha);
+    padding: 6px 16px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+
+.marketplace-hero .hero-description {
+    font-size: 1.15rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.search-container-bar {
+    background-color: #ffffff !important;
+}
+
+.input-group-custom .form-control {
+    font-size: 0.95rem;
+}
+
+.input-group-custom .input-group-text i {
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+.search-container-bar .form-select {
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-position: right 0.5rem center;
+}
+
+@media (min-width: 768px) {
+    .border-start-md {
+        border-left: 1px solid #e2e8f0 !important;
+    }
+}
+
+.btn-search-submit {
+    background-color: #f25400;
+    border: 1px solid #f25400;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-search-submit:hover,
+.btn-search-submit:focus {
+    background-color: #d14600;
+    border-color: #d14600;
+}
