@@ -55,7 +55,7 @@ function updateNavbarForUser() {
     const actionsSlot = document.getElementById('navbar-user-actions');
     if (!actionsSlot) return;
 
-    const cartCount = Cart.get().length;
+    const cartCount = (typeof Cart !== 'undefined') ? Cart.get().length : 0;
 
     if (user) {
         actionsSlot.innerHTML = `
@@ -76,7 +76,9 @@ function updateNavbarForUser() {
                     </button>
                 </div>
             </li>`;
-        document.getElementById('cart-btn')?.addEventListener('click', openCartSidebar);
+        document.getElementById('cart-btn')?.addEventListener('click', () => {
+            if (typeof openCartSidebar === 'function') openCartSidebar();
+        });
         const menuBtn  = document.getElementById('user-menu-btn');
         const dropdown = document.getElementById('user-dropdown');
         menuBtn?.addEventListener('click', e => {
@@ -243,5 +245,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     }
 
-    Cart.updateBadge();
+    if (typeof Cart !== 'undefined') Cart.updateBadge();
 });
