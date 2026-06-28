@@ -236,3 +236,73 @@ async function initMarketplacePage() {
     window._refreshMarketplace = renderProducts;
     renderProducts();
 }
+
+/* ==========================
+ * POST / EDIT LISTING MODAL
+ ========================*/
+function openPostListingModal(existingProduct = null) {
+    const isEdit = !!existingProduct;
+    let modal = document.getElementById('post-listing-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'post-listing-modal';
+        document.body.appendChild(modal);
+    }
+    modal.innerHTML = `
+    <div class="modal-backdrop" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;">
+        <div class="bg-white rounded-4 shadow-lg" style="width:100%;max-width:520px;overflow:hidden;max-height:90vh;overflow-y:auto;">
+            <div class="modal-header-orange text-white p-4 d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold m-0">${isEdit ? 'Edit Listing' : 'Post a New Listing'}</h5>
+                <button onclick="closePostListingModal()" style="background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;">&times;</button>
+            </div>
+            <div class="p-4">
+                <div class="mb-3">
+                    <label class="form-label">Product Title *</label>
+                    <input type="text" id="pl-title" class="form-control rounded-3" placeholder="e.g. Canon EOS Camera" value="${isEdit ? existingProduct.title : ''}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category *</label>
+                    <select id="pl-category" class="form-select rounded-3">
+                        <option value="">Select a category</option>
+                        ${['Electronics','Textbooks','Furniture','Services','Other'].map(c =>
+                            `<option value="${c}" ${isEdit && existingProduct.category === c ? 'selected' : ''}>${c}</option>`
+                        ).join('')}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Price (Ksh) *</label>
+                    <input type="number" id="pl-price" class="form-control rounded-3" placeholder="e.g. 5000" min="0" value="${isEdit ? existingProduct.price : ''}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Condition</label>
+                    <select id="pl-condition" class="form-select rounded-3">
+                        ${['Brand New','Like New','Good','Fair','Service'].map(c =>
+                            `<option value="${c}" ${isEdit && existingProduct.condition === c ? 'selected' : ''}>${c}</option>`
+                        ).join('')}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description *</label>
+                    <textarea id="pl-desc" class="form-control rounded-3" rows="3" placeholder="Describe your item...">${isEdit ? existingProduct.description : ''}</textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Image URL</label>
+                    <input type="url" id="pl-image" class="form-control rounded-3" placeholder="https://..." value="${isEdit ? existingProduct.image : ''}">
+                    <div class="form-text">Paste an image link from Unsplash or similar.</div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-orange flex-grow-1 py-2 fw-medium rounded-3" onclick="${isEdit ? `saveEditProduct('${existingProduct.id}')` : 'submitNewListing()'}">
+                        ${isEdit ? 'Save Changes' : 'Post Listing'}
+                    </button>
+                    <button class="btn btn-outline-secondary rounded-3" onclick="closePostListingModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    modal.style.display = 'block';
+}
+
+function closePostListingModal() {
+    const modal = document.getElementById('post-listing-modal');
+    if (modal) modal.style.display = 'none';
+}
