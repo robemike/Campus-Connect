@@ -102,7 +102,7 @@ const EventReg = {
 };
 
 /* ====================
-EVENTS PAGE
+    EVENTS PAGE
 ===================== */
 async function initEventsPage() {
     const container = document.getElementById('events-catalog-container');
@@ -214,3 +214,6 @@ async function initEventsPage() {
     renderEvents();
 }
 
+/* ====================
+    UTIL: share an event
+===================== */
