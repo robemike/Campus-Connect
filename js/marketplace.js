@@ -372,3 +372,14 @@ function saveEditProduct(id) {
     showToast('Listing updated!', 'success');
     if (typeof window._refreshMarketplace === 'function') window._refreshMarketplace();
 }
+
+function deleteProduct(id) {
+    if (!confirm('Are you sure you want to delete this listing?')) return;
+    MarketplaceStore.deleteProduct(id);
+    showToast('Listing deleted.', 'info');
+    if (typeof window._refreshMarketplace === 'function') window._refreshMarketplace();
+    else {
+        const card = document.querySelector(`[data-product-id="${id}"]`);
+        if (card) card.remove();
+    }
+}
