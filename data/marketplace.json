@@ -1,38 +1,98 @@
 [
   {
-    "id": 1,
-    "title": "MacBook Pro 2024",
-    "seller": "Sarah J.",
-    "price": "$1,200",
+    "id": "p1",
+    "title": "MacBook Pro 2024 (M3)",
+    "seller": "Sarah Johnson",
+    "sellerId": "user_sarah",
+    "price": 155000,
+    "priceDisplay": "Ksh 155,000",
+    "category": "Electronics",
     "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80",
-    "alt": "MacBook Pro 2024",
-    "link": "#"
+    "description": "8GB Unified Memory, 512GB SSD. Perfect condition with original charger and box packaging.",
+    "condition": "Like New"
   },
   {
-    "id": 2,
-    "title": "Calculus Textbook",
-    "seller": "Mike T.",
-    "price": "$45",
+    "id": "p2",
+    "title": "Calculus Textbook (12th Ed)",
+    "seller": "Mike Turner",
+    "sellerId": "user_mike",
+    "price": 5800,
+    "priceDisplay": "Ksh 5,800",
+    "category": "Textbooks",
     "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80",
-    "alt": "Calculus Textbook",
-    "link": "#"
+    "description": "Slightly used with minimal highlighting on some chapters. Essential resource for first-year engineering fields.",
+    "condition": "Good"
   },
   {
-    "id": 3,
+    "id": "p3",
     "title": "Photography Session",
-    "seller": "Emma K.",
-    "price": "$30/hr",
+    "seller": "Emma Kim",
+    "sellerId": "user_emma",
+    "price": 3500,
+    "priceDisplay": "Ksh 3,500/hr",
+    "category": "Services",
     "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80",
-    "alt": "Photography Session",
-    "link": "#"
+    "description": "Professional 1-hour outdoor shoot including 10 edited soft copies. Great choice for graduation or birthday events.",
+    "condition": "Service"
   },
   {
-    "id": 4,
-    "title": "Desk Lamp",
-    "seller": "Alex R.",
-    "price": "$20",
+    "id": "p4",
+    "title": "Modern Desk Lamp",
+    "seller": "Alex Rivera",
+    "sellerId": "user_alex",
+    "price": 2600,
+    "priceDisplay": "Ksh 2,600",
+    "category": "Furniture",
     "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
-    "alt": "Desk Lamp",
-    "link": "#"
+    "description": "Adjustable brightness with 3 distinct temperature color modes. Comes equipped with an integrated USB device charging port.",
+    "condition": "Good"
+  },
+  {
+    "id": "p5",
+    "title": "Sony WH-1000XM5 Headphones",
+    "seller": "Brian Oloo",
+    "sellerId": "user_brian",
+    "price": 28000,
+    "priceDisplay": "Ksh 28,000",
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80",
+    "description": "Industry-leading noise cancellation. Barely used for 3 months. Comes with all original accessories.",
+    "condition": "Like New"
+  },
+  {
+    "id": "p6",
+    "title": "Data Structures & Algorithms (4th Ed)",
+    "seller": "Cynthia Wanjiku",
+    "sellerId": "user_cynthia",
+    "price": 3200,
+    "priceDisplay": "Ksh 3,200",
+    "category": "Textbooks",
+    "image": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=500&q=80",
+    "description": "Clean copy, no highlighting. Covers arrays, linked lists, trees, graphs, and sorting algorithms in depth.",
+    "condition": "Good"
+  },
+  {
+    "id": "p7",
+    "title": "Ergonomic Study Chair",
+    "seller": "James Mwangi",
+    "sellerId": "user_james",
+    "price": 12500,
+    "priceDisplay": "Ksh 12,500",
+    "category": "Furniture",
+    "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=500&q=80",
+    "description": "Adjustable lumbar support and armrests. Perfect for long study sessions. Pickup only from South C.",
+    "condition": "Good"
+  },
+  {
+    "id": "p8",
+    "title": "CV & Resume Writing Service",
+    "seller": "Amina Hassan",
+    "sellerId": "user_amina",
+    "price": 800,
+    "priceDisplay": "Ksh 800",
+    "category": "Services",
+    "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=500&q=80",
+    "description": "Professional CV writing and formatting. Includes cover letter. Turnaround within 24 hours. 50+ satisfied clients.",
+    "condition": "Service"
   }
 ]

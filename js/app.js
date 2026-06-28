@@ -8,7 +8,9 @@
      • Boot routine that dispatches to the right page
    ============================================== */
 
-// ── TOAST SYSTEM ──────────────────────────────────────
+/* ==========================
+    TOAST SYSTEM
+==========================*/
 function showToast(message, type = 'info') {
     // Implementation for showing toast notifications
     let container = document.getElementById('toast-container');
@@ -28,8 +30,9 @@ function showToast(message, type = 'info') {
     }, 3000);    
 }
 
-// ── SESSION / AUTH ────────────────────────────────────
-const Auth = {
+/* ==========================
+    SESSION/ AUTH
+==========================*/const Auth = {
     getUser() {
         try { return JSON.parse(localStorage.getItem('cc_user')) || null; }
         catch { return null; }

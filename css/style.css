@@ -1,31 +1,50 @@
 /* ===========================
-   CSS CUSTOM PROPERTIES
+   DESIGN TOKENS / CUSTOM PROPERTIES
    =========================== */
 :root {
+    /* Brand Colors */
     --brand-purple: #6f42c1;
+    --brand-purple-hover: #7c3aed;
     --brand-teal: #0d9488;
     --brand-orange: #ff6b00;
     --brand-orange-hover: #e05e00;
+    
+    /* Text & Navigation */
     --nav-dark: #1e293b;
     --text-navy: #0a192f;
+    --text-navy-slate: #334155;
     --read-more-purple: #5c33b5;
+    
+    /* Accents & UI Elements */
     --orange-accent: #ff6b00;
     --green-accent: #2e7d32;
     --border-soft: #eaeaea;
     --card-radius: 16px;
+    --pill-bg-gray: #f1f5f9;
+    --pill-bg-alpha: rgba(255, 255, 255, 0.2);
+    --pill-orange-alpha: rgba(255, 255, 255, 0.25);
+    --input-fill-gray: #f1f5f9;
 
-    /* Section Colors and separator */
+    /* Section Backgrounds & Dividers */
     --section-light: #f8f9fa;
     --section-white: #ffffff;
     --divider-orange: rgba(255, 107, 0, 0.2);
+
+    /* Hero Gradients */
+    --hero-purple-start: #7e22ce;
+    --hero-purple-end: #4c1d95;
+    --hero-green-start: #22c55e;
+    --hero-green-end: #15803d;
+    --hero-orange-start: #ff7e15; 
+    --hero-orange-end: #e64a00;   
 }
 
 /* ===========================
-   BASE
+   BASE STYLES
    =========================== */
 body {
-    font-family: 'Segoe UI', Roboto, Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fdfdfd;
     margin: 0;
     padding: 0;
 }
@@ -33,11 +52,12 @@ body {
 /* ===========================
    UTILITY / TEXT COLORS
    =========================== */
-.text-purple      { color: var(--brand-purple); }
-.text-teal        { color: var(--brand-teal); }
-.text-navy        { color: var(--text-navy); }
-.text-orange      { color: var(--orange-accent); }
-.text-green       { color: var(--green-accent); }
+.text-purple { color: var(--brand-purple); }
+.text-teal   { color: var(--brand-teal); }
+.text-navy   { color: var(--text-navy); }
+.text-orange { color: var(--orange-accent); }
+.text-green  { color: var(--green-accent); }
+.icon-purple { color: var(--brand-purple); }
 
 /* ===========================
    NAVBAR / BRAND
@@ -79,8 +99,9 @@ body {
 }
 
 /* ===========================
-   HERO SECTION
+   HERO SECTIONS (General, Events, Clubs, & Marketplace)
    =========================== */
+/* Base Hero */
 .hero-section {
     background: linear-gradient(135deg, #3d1475 0%, #1a0636 100%);
     background-size: cover;
@@ -95,13 +116,88 @@ body {
     line-height: 1.6;
 }
 
+/* Events & Clubs Heroes */
+.events-hero-section,
+.clubs-hero-section {
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.events-hero-section {
+    background: linear-gradient(135deg, var(--hero-purple-start) 0%, var(--hero-purple-end) 100%);
+}
+
+.clubs-hero-section {
+    background: linear-gradient(135deg, var(--hero-green-start) 0%, var(--hero-green-end) 100%);
+    padding-top: 75px !important;  
+    padding-bottom: 75px !important;
+}
+
+.events-hero-section .hero-description,
+.clubs-hero-section .hero-description {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.clubs-hero-section .hero-description { opacity: 0.92; }
+
+/* Marketplace Hero */
+.marketplace-hero {
+    background: linear-gradient(135deg, var(--hero-orange-start) 0%, var(--hero-orange-end) 100%);
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.marketplace-hero .hero-description {
+    font-size: 1.15rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
 /* ===========================
-   HERO BUTTONS
+   HERO BADGES / PILLS
    =========================== */
+.badge-upcoming,
+.badge-communities {
+    background-color: var(--pill-bg-alpha);
+    padding: 6px 16px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+
+.badge-marketplace {
+    background-color: var(--pill-orange-alpha);
+    padding: 6px 16px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+/* Shared Action Button Settings */
+.btn-explore,
+.btn-outline-white,
+.btn-orange,
+.btn-orange-sm,
+.btn-purple,
+.btn-white-action,
+.btn-outline-action,
+.btn-search-action,
+.btn-outline-secondary-custom {
+    border: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Base White/Explore Buttons */
 .btn-explore {
     background-color: #00bfa5;
     color: #ffffff;
-    border: none;
     border-radius: 8px;
 }
 
@@ -115,6 +211,93 @@ body {
     border: 1px solid #ffffff;
     border-radius: 8px;
     width: 100px;
+}
+
+/* Orange Buttons */
+.btn-orange {
+    background-color: var(--brand-orange);
+    color: #ffffff;
+}
+
+.btn-orange:hover,
+.btn-orange:focus {
+    background-color: var(--brand-orange-hover);
+    color: #ffffff;
+}
+
+.btn-orange-sm {
+    background-color: var(--brand-orange);
+    color: #ffffff;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+}
+
+.btn-orange-sm:hover {
+    background-color: var(--brand-orange-hover);
+    color: #ffffff;
+}
+
+/* Purple & Action Buttons */
+.btn-purple {
+    background-color: var(--brand-purple);
+    color: #ffffff;
+}
+
+.btn-purple:hover {
+    background-color: var(--brand-purple-hover);
+    color: #ffffff;
+}
+
+.btn-white-action {
+    background-color: #ffffff;
+    color: #4c1d95;
+    border: 1px solid #ffffff !important;
+}
+
+.btn-white-action:hover {
+    background-color: #f3e8ff;
+    color: #4c1d95;
+}
+
+.btn-white-action i { font-size: 1.1rem; }
+
+.btn-outline-action {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.btn-outline-action:hover {
+    border-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Join Button */
+.btn-outline-join {
+    border: 1px solid #e0e0e0;
+    color: #333333;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.btn-outline-join:hover {
+    background-color: #f5f5f5;
+    border-color: #cccccc;
+    color: #000000;
+}
+
+/* Search Submit Button */
+.btn-search-submit {
+    background-color: #f25400;
+    border: 1px solid #f25400;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-search-submit:hover,
+.btn-search-submit:focus {
+    background-color: #d14600;
+    border-color: #d14600;
 }
 
 /* ===========================
@@ -164,7 +347,7 @@ body {
 .card-teal   { background: linear-gradient(135deg, #00acc1 0%, #006064 100%); }
 
 /* ===========================
-   BADGES (shared base + variants)
+   BADGES & LABELS
    =========================== */
 .badge {
     padding: 5px 12px;
@@ -181,37 +364,10 @@ body {
 .badge-green-soft  { background-color: #dcfce7; color: #15803d; }
 
 /* ===========================
-   MARKETPLACE SECTION
+   MARKETPLACE MAIN GRID
    =========================== */
 .marketplace-title    { font-size: 2rem; }
 .marketplace-subtitle { font-size: 1.05rem; }
-
-.btn-orange {
-    background-color: var(--brand-orange);
-    color: #ffffff;
-    border: none;
-    transition: background-color 0.2s ease;
-}
-
-.btn-orange:hover,
-.btn-orange:focus {
-    background-color: var(--brand-orange-hover);
-    color: #ffffff;
-}
-
-.btn-orange-sm {
-    background-color: var(--brand-orange);
-    color: #ffffff;
-    border: none;
-    padding: 6px 16px;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease;
-}
-
-.btn-orange-sm:hover {
-    background-color: var(--brand-orange-hover);
-    color: #ffffff;
-}
 
 .product-card {
     border-radius: var(--card-radius) !important;
@@ -247,7 +403,35 @@ body {
 .product-card .price-text  { font-size: 1.35rem; color: var(--brand-orange); }
 
 /* ===========================
-   HAPPENING SECTION
+   SEARCH BAR COMPONENTS
+   =========================== */
+.search-container-bar {
+    background-color: #ffffff !important;
+}
+
+.input-group-custom .form-control {
+    font-size: 0.95rem;
+}
+
+.input-group-custom .input-group-text i {
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+.search-container-bar .form-select {
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-position: right 0.5rem center;
+}
+
+@media (min-width: 768px) {
+    .border-start-md {
+        border-left: 1px solid #e2e8f0 !important;
+    }
+}
+
+/* ===========================
+   HAPPENING / ARTICLES SECTION
    =========================== */
 .section-main-title { font-size: 2rem; }
 
@@ -281,6 +465,9 @@ body {
 
 .read-more-link:hover { text-decoration: underline !important; }
 
+/* ===========================
+   SIDEBAR & TRENDS
+   =========================== */
 .sidebar-container { padding-top: 54px; }
 
 .sidebar-widget {
@@ -314,20 +501,6 @@ body {
     height: 44px;
     border-radius: 10px;
     object-fit: cover;
-}
-
-.btn-outline-join {
-    border: 1px solid #e0e0e0;
-    color: #333333;
-    background-color: transparent;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-}
-
-.btn-outline-join:hover {
-    background-color: #f5f5f5;
-    border-color: #cccccc;
-    color: #000000;
 }
 
 /* ===========================
