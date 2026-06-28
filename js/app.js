@@ -236,13 +236,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             break;
 
         case 'clubs.html':
-            if (Components.loadClubs) await Components.loadClubs();
+            await Components.loadClubs();
+            if (typeof initClubsPage === 'function') initClubsPage();
             break;
 
         case 'cart.html':
             if (typeof initCartPage === 'function') initCartPage();
             break;
 
+        case 'checkout.html':
+            // checkout.html handles its own init via inline script after Cart.get()
+            break;
     }
 
     if (typeof Cart !== 'undefined') Cart.updateBadge();

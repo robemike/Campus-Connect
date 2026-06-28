@@ -1,21 +1,9 @@
 /* ==============================================
    CampusConnect — Component Loader
-   Fetches HTML components from /components folder and
-   injects them into placeholder containers.
-   Uses fetch (AJAX).
    ============================================== */
-
-/**
- * Load a single HTML component into a container.
- * @param {string} containerId  - ID of the target <div> container/ placeholder container
- * @param {string} file         - Path to the component HTML
- * @param {Function} [callback] - Callback fired after injection
- * @returns {Promise<void>}
- */
 
 function loadComponent(containerId, file, callback) {
     const container = document.getElementById(containerId);
-
     if (!container) return Promise.resolve();
 
     return fetch(file)
@@ -30,7 +18,7 @@ function loadComponent(containerId, file, callback) {
         .catch(err => {
             console.error(`Failed to load ${file}:`, err);
             container.innerHTML = `<div class="p-4 text-center text-muted small">Could not load section.</div>`;
-        }); 
+        });
 }
 
 const Components = {
@@ -54,6 +42,7 @@ const Components = {
 
     async loadEvents() {
         await loadComponent('events-hero-container', 'components/events-hero-section.html');
+        await loadComponent('events-catalog-container', 'components/events-catalog.html');
     },
 
     async loadMarketplace() {
@@ -62,5 +51,6 @@ const Components = {
 
     async loadClubs() {
         await loadComponent('clubs-hero-container', 'components/clubs-hero-section.html');
+        await loadComponent('clubs-catalog-container-wrapper', 'components/clubs-catalog.html');
     },
 };
