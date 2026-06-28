@@ -217,3 +217,14 @@ async function initEventsPage() {
 /* ====================
     UTIL: share an event
 ===================== */
+function shareEvent(title) {
+    if (navigator.share) {
+        navigator.share({ title: `CampusConnect: ${title}`, url: window.location.href })
+            .catch(() => {});
+    } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+        showToast('Event link copied to clipboard!', 'success');
+    } else {
+        showToast('Sharing not supported on this browser.', 'info');
+    }
+}
