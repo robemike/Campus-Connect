@@ -1,0 +1,80 @@
+[
+  {
+    "id": "e1",
+    "title": "Tech Hackathon 2026",
+    "category": "Technology",
+    "description": "48 hours of coding, innovation, and collaboration. Win prizes worth Ksh 500,000! Teams of 2–4 students tackle real-world problems.",
+    "date": "Jul 18-19, 2026",
+    "time": "9:00 AM – 6:00 PM",
+    "location": "Engineering Building, Block C",
+    "attendees": 487,
+    "maxAttendees": 600,
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "e2",
+    "title": "Career Fair 2026",
+    "category": "Career",
+    "description": "Meet with top employers from 40+ companies. Explore internship and full-time opportunities across tech, finance, engineering, and more.",
+    "date": "Jul 20, 2026",
+    "time": "10:00 AM – 4:00 PM",
+    "location": "Student Union Hall",
+    "attendees": 1243,
+    "maxAttendees": 2000,
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "e3",
+    "title": "Spring Music Festival",
+    "category": "Entertainment",
+    "description": "Live performances from student bands and special guest artists. Food stalls, games, and an incredible vibe on the campus green.",
+    "date": "Jul 22, 2026",
+    "time": "6:00 PM – 11:00 PM",
+    "location": "Campus Green",
+    "attendees": 892,
+    "maxAttendees": 1500,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "e4",
+    "title": "Entrepreneurship Summit",
+    "category": "Business",
+    "description": "Hear from successful startup founders, VCs, and industry leaders. Pitch your idea for a chance to win seed funding.",
+    "date": "Jul 25, 2026",
+    "time": "8:30 AM – 5:00 PM",
+    "location": "Business School Auditorium",
+    "attendees": 320,
+    "maxAttendees": 500,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "e5",
+    "title": "Art & Culture Exhibition",
+    "category": "Arts",
+    "description": "A showcase of student artwork, photography, sculpture, and digital creations. Opening night reception with free refreshments.",
+    "date": "Jul 28, 2026",
+    "time": "4:00 PM – 9:00 PM",
+    "location": "Arts & Design Centre",
+    "attendees": 210,
+    "maxAttendees": 400,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "e6",
+    "title": "Wellness & Mindfulness Workshop",
+    "category": "Wellness",
+    "description": "Guided meditation, yoga sessions, and mental health talks. Designed to help students manage exam stress and build healthy habits.",
+    "date": "Aug 2, 2026",
+    "time": "10:00 AM – 1:00 PM",
+    "location": "Campus Sports Complex",
+    "attendees": 145,
+    "maxAttendees": 200,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80"
+  }
+]
