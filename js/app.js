@@ -41,3 +41,37 @@ const Auth = {
     },
     isLoggedIn() { return !!this.getUser(); },
 };
+
+/* ==========================
+    BOOT
+==========================*/
+document.addEventListener('DOMContentLoaded', async () => {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Shell on every page
+    await Components.loadShell();
+
+    switch (page) {
+        case '':
+        case 'index.html':
+            await Components.loadHome();
+            break;
+
+        case 'events.html':
+            await Components.loadEvents();
+            if (typeof initEventsPage === 'function') initEventsPage();
+            break;
+
+        case 'marketplace.html':
+            await Components.loadMarketplace();
+            if (typeof initMarketplacePage === 'function') initMarketplacePage();
+            break;
+
+        case 'clubs.html':
+            if (Components.loadClubs) await Components.loadClubs();
+            break;
+
+    }
+
+    Cart.updateBadge();
+});
