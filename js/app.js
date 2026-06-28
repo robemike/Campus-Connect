@@ -45,49 +45,7 @@ function showToast(message, type = 'info') {
     isLoggedIn() { return !!this.getUser(); },
 };
 
-/* ==========================
-    MARKET CART FUNCTIONALITY
-==========================*/
 
-const Cart = {
-    get() {
-        try { return JSON.parse(localStorage.getItem('cc_cart')) || []; }
-        catch { return []; }
-    },
-    save(items) { localStorage.setItem('cc_cart', JSON.stringify(items)); },
-    add(product) {
-        const items = this.get();
-        if (items.find(i => i.id === product.id)) {
-            showToast(`"${product.title}" is already in your cart.`, 'info');
-            return;
-        }
-        items.push({ ...product, addedAt: Date.now() });
-        this.save(items);
-        this.updateBadge();
-        showToast(`Added "${product.title}" to cart!`, 'success');
-        if (document.getElementById('cart-sidebar')) renderCartSidebar();
-    },
-    remove(productId) {
-        this.save(this.get().filter(i => i.id !== productId));
-        this.updateBadge();
-        if (document.getElementById('cart-sidebar')) renderCartSidebar();
-    },
-    clear() {
-        this.save([]);
-        this.updateBadge();
-        if (document.getElementById('cart-sidebar')) renderCartSidebar();
-    },
-    updateBadge() {
-        const count = this.get().length;
-        document.querySelectorAll('.cart-count').forEach(el => {
-            el.textContent = count;
-            el.style.display = count > 0 ? 'inline' : 'none';
-        });
-    },
-    total() {
-        return this.get().reduce((sum, i) => sum + (i.price || 0), 0);
-    },
-};
 
 /* ==========================
     NAVBAR
@@ -249,6 +207,7 @@ function handleSignup() {
 }
 
 
+
 /* ==========================
     BOOT
 ==========================*/
@@ -276,6 +235,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         case 'clubs.html':
             if (Components.loadClubs) await Components.loadClubs();
+            break;
+
+        case 'cart.html':
+            if (typeof initCartPage === 'function') initCartPage();
             break;
 
     }
