@@ -306,3 +306,69 @@ function closePostListingModal() {
     const modal = document.getElementById('post-listing-modal');
     if (modal) modal.style.display = 'none';
 }
+
+function submitNewListing() {
+    const user = Auth.getUser();
+    if (!user) { showToast('Please log in first.', 'error'); return; }
+
+    const title       = document.getElementById('pl-title').value.trim();
+    const category    = document.getElementById('pl-category').value;
+    const price       = parseInt(document.getElementById('pl-price').value) || 0;
+    const condition   = document.getElementById('pl-condition').value;
+    const description = document.getElementById('pl-desc').value.trim();
+    const image       = document.getElementById('pl-image').value.trim() ||
+        'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=500&q=80';
+
+    if (!title || !category || !price || !description) {
+        showToast('Please fill in all required fields.', 'error');
+        return;
+    }
+
+    const product = {
+        id: 'up_' + Date.now(),
+        title, category, price,
+        priceDisplay: `Ksh ${price.toLocaleString()}`,
+        condition,
+        description,
+        image,
+        seller: user.name,
+        sellerId: user.email.replace(/[^a-z0-9]/gi, '_'),
+        createdAt: Date.now(),
+    };
+
+    MarketplaceStore.addProduct(product);
+    closePostListingModal();
+    showToast(`"${title}" listed successfully!`, 'success');
+    if (typeof window._refreshMarketplace === 'function') window._refreshMarketplace();
+    else if (typeof initHomeMarketplacePreview === 'function') initHomeMarketplacePreview();
+}
+
+function openEditProductModal(id) {
+    const product = MarketplaceStore.getUserProducts().find(p => p.id === id);
+    if (!product) { showToast('Product not found.', 'error'); return; }
+    openPostListingModal(product);
+}
+
+function saveEditProduct(id) {
+    const title       = document.getElementById('pl-title').value.trim();
+    const category    = document.getElementById('pl-category').value;
+    const price       = parseInt(document.getElementById('pl-price').value) || 0;
+    const condition   = document.getElementById('pl-condition').value;
+    const description = document.getElementById('pl-desc').value.trim();
+    const image       = document.getElementById('pl-image').value.trim();
+
+    if (!title || !category || !price || !description) {
+        showToast('Please fill in all required fields.', 'error');
+        return;
+    }
+
+    MarketplaceStore.updateProduct(id, {
+        title, category, price,
+        priceDisplay: `Ksh ${price.toLocaleString()}`,
+        condition, description, image,
+    });
+
+    closePostListingModal();
+    showToast('Listing updated!', 'success');
+    if (typeof window._refreshMarketplace === 'function') window._refreshMarketplace();
+}
