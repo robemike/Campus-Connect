@@ -46,6 +46,108 @@ function showToast(message, type = 'info') {
 };
 
 /* ==========================
+    MARKET CART FUNCTIONALITY
+==========================*/
+
+const Cart = {
+    get() {
+        try { return JSON.parse(localStorage.getItem('cc_cart')) || []; }
+        catch { return []; }
+    },
+    save(items) { localStorage.setItem('cc_cart', JSON.stringify(items)); },
+    add(product) {
+        const items = this.get();
+        if (items.find(i => i.id === product.id)) {
+            showToast(`"${product.title}" is already in your cart.`, 'info');
+            return;
+        }
+        items.push({ ...product, addedAt: Date.now() });
+        this.save(items);
+        this.updateBadge();
+        showToast(`Added "${product.title}" to cart!`, 'success');
+        if (document.getElementById('cart-sidebar')) renderCartSidebar();
+    },
+    remove(productId) {
+        this.save(this.get().filter(i => i.id !== productId));
+        this.updateBadge();
+        if (document.getElementById('cart-sidebar')) renderCartSidebar();
+    },
+    clear() {
+        this.save([]);
+        this.updateBadge();
+        if (document.getElementById('cart-sidebar')) renderCartSidebar();
+    },
+    updateBadge() {
+        const count = this.get().length;
+        document.querySelectorAll('.cart-count').forEach(el => {
+            el.textContent = count;
+            el.style.display = count > 0 ? 'inline' : 'none';
+        });
+    },
+    total() {
+        return this.get().reduce((sum, i) => sum + (i.price || 0), 0);
+    },
+};
+
+/* ==========================
+    NAVBAR
+==========================*/
+function updateNavbarForUser() {
+    const user = Auth.getUser();
+    const actionsSlot = document.getElementById('navbar-user-actions');
+    if (!actionsSlot) return;
+
+    const cartCount = Cart.get().length;
+
+    if (user) {
+        actionsSlot.innerHTML = `
+            <li class="nav-item px-2 d-flex align-items-center">
+                <button class="btn p-0 position-relative me-3" id="cart-btn" title="Cart" style="background:none;border:none;">
+                    <i class="bi bi-bag nav-icon"></i>
+                    <span class="cart-count position-absolute cart-badge" style="display:${cartCount > 0 ? 'inline' : 'none'}">${cartCount}</span>
+                </button>
+            </li>
+            <li class="nav-item d-flex align-items-center px-2">
+                <div class="user-avatar" id="user-menu-btn" title="${user.name}">${user.name.charAt(0).toUpperCase()}</div>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <div class="dropdown-menu dropdown-menu-end shadow border-0 p-2" id="user-dropdown" style="display:none;position:absolute;top:64px;right:16px;min-width:180px;border-radius:12px;z-index:1000;">
+                    <div class="px-3 py-2 text-muted small border-bottom mb-1">${user.email}</div>
+                    <button class="dropdown-item rounded-2 py-2" onclick="Auth.logout()">
+                        <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                    </button>
+                </div>
+            </li>`;
+        document.getElementById('cart-btn')?.addEventListener('click', openCartSidebar);
+        const menuBtn  = document.getElementById('user-menu-btn');
+        const dropdown = document.getElementById('user-dropdown');
+        menuBtn?.addEventListener('click', e => {
+            e.stopPropagation();
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        });
+        document.addEventListener('click', () => { if (dropdown) dropdown.style.display = 'none'; });
+    } else {
+        actionsSlot.innerHTML = `
+            <li class="nav-item px-2">
+                <button class="btn btn-outline-secondary rounded-3 fw-medium me-2" onclick="openAuthModal()">Log In</button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-purple rounded-3 fw-medium" onclick="openAuthModal(null, true)">Sign Up</button>
+            </li>`;
+    }
+}
+
+function markActiveNavLink() {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        if (href === page || (page === '' && href === 'index.html') || href.endsWith(page)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+/* ==========================
     BOOT
 ==========================*/
 document.addEventListener('DOMContentLoaded', async () => {
