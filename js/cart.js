@@ -198,10 +198,9 @@ function renderCartPage() {
                     <span class="fw-bold fs-5">Total</span>
                     <span class="fw-bold fs-5" style="color:var(--brand-orange);">Ksh ${Cart.total().toLocaleString()}</span>
                 </div>
-                <button class="btn btn-orange w-100 py-2 fw-medium rounded-3 mb-2"
-                    onclick="showToast('Checkout coming soon! Contact the sellers directly.','info')">
+                <a href="checkout.html" class="btn btn-orange w-100 py-2 fw-medium rounded-3 mb-2 text-decoration-none text-center d-block">
                     <i class="bi bi-credit-card me-2"></i> Proceed to Checkout
-                </button>
+                </a>
                 <button class="btn btn-outline-secondary w-100 py-2 fw-medium rounded-3"
                     onclick="if(confirm('Clear all items from your cart?')) Cart.clear()">
                     <i class="bi bi-trash me-2"></i> Clear Cart

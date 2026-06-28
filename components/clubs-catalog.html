@@ -1,0 +1,46 @@
+<section class="clubs-catalog-section py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+
+        <!-- Section Header + Filter -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+                <h2 class="fw-bold text-navy mb-1" style="font-size:1.85rem;">Explore Clubs & Societies</h2>
+                <p class="text-muted mb-0 small">Find your people. Join a community that shares your passion.</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <select class="form-select form-select-sm rounded-3 border-0 shadow-sm" id="clubs-category-select" style="min-width:150px;font-size:0.9rem;">
+                    <option value="All">All Categories</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Business">Business</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Leadership">Leadership</option>
+                    <option value="Social Impact">Social Impact</option>
+                    <option value="Wellness">Wellness</option>
+                    <option value="Sports">Sports</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="d-flex flex-wrap gap-2 mb-5" id="clubs-filter-pills">
+            <button class="btn filter-pill active" data-filter="All">All Clubs</button>
+            <button class="btn filter-pill" data-filter="Technology">Technology</button>
+            <button class="btn filter-pill" data-filter="Business">Business</button>
+            <button class="btn filter-pill" data-filter="Arts">Arts</button>
+            <button class="btn filter-pill" data-filter="Leadership">Leadership</button>
+            <button class="btn filter-pill" data-filter="Social Impact">Social Impact</button>
+            <button class="btn filter-pill" data-filter="Wellness">Wellness</button>
+            <button class="btn filter-pill" data-filter="Sports">Sports</button>
+        </div>
+
+        <!-- Clubs Grid -->
+        <div class="row g-4" id="clubs-catalog-container">
+            <div class="col-12 text-center py-5 text-muted">
+                <i class="bi bi-arrow-clockwise" style="font-size:2rem;animation:spin 1s linear infinite;display:block;margin-bottom:12px;"></i>
+                Loading clubs…
+            </div>
+        </div>
+
+    </div>
+</section>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
