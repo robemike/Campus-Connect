@@ -100,3 +100,139 @@ async function initHomeMarketplacePreview() {
 /* ==========================
  * MARKETPLACE PAGE
  ========================*/
+
+async function initMarketplacePage() {
+    const container = document.getElementById('product-catalog-container');
+    if (!container) return;
+
+    let products = await MarketplaceStore.getAll(true);
+    let currentFilter = 'All Items';
+    let searchQuery = '';
+
+    // -- Filter pill buttons in the catalog header
+    document.querySelectorAll('.btn-filter').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.filter;
+            renderProducts();
+        });
+    });
+
+    const heroSearchBtn   = document.getElementById('marketplace-search-btn');
+    const heroSearchInput = document.getElementById('marketplace-search-input');
+    if (heroSearchBtn && heroSearchInput) {
+        heroSearchBtn.addEventListener('click', () => {
+            searchQuery = heroSearchInput.value.trim().toLowerCase();
+            renderProducts();
+            document.getElementById('marketplace-catalog-section')
+                ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        heroSearchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') heroSearchBtn.click();
+        });
+    }
+
+    const categorySelect = document.getElementById('marketplace-category-select');
+    if (categorySelect) {
+        categorySelect.addEventListener('change', function () {
+            const val = this.value;
+            if (!val) return;
+            document.querySelectorAll('.btn-filter').forEach(b => {
+                b.classList.toggle('active', b.dataset.filter === val);
+            });
+            currentFilter = val;
+            renderProducts();
+            document.getElementById('marketplace-catalog-section')
+                ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    document.querySelectorAll('.btn-post-listing').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (!Auth.isLoggedIn()) {
+                openAuthModal(() => openPostListingModal());
+            } else {
+                openPostListingModal();
+            }
+        });
+    });
+
+    async function renderProducts() {
+        products = await MarketplaceStore.getAll(true);
+        const user = Auth.getUser();
+        let filtered = products.slice();
+
+        if (currentFilter !== 'All Items') {
+            filtered = filtered.filter(p => p.category === currentFilter);
+        }
+        if (searchQuery) {
+            filtered = filtered.filter(p =>
+                p.title.toLowerCase().includes(searchQuery) ||
+                p.description.toLowerCase().includes(searchQuery) ||
+                p.seller.toLowerCase().includes(searchQuery) ||
+                p.category.toLowerCase().includes(searchQuery)
+            );
+        }
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="empty-state">
+                        <i class="bi bi-search"></i>
+                        <p class="fw-medium text-navy">No products found</p>
+                        <p class="small text-muted">Try a different search or filter.</p>
+                    </div>
+                </div>`;
+            return;
+        }
+
+        container.innerHTML = filtered.map(p => {
+            const isOwner = user && p.sellerId === user.email.replace(/[^a-z0-9]/gi, '_');
+            const ownerControls = isOwner ? `
+                <div class="product-owner-actions d-flex gap-1 mt-2">
+                    <button class="btn btn-sm btn-outline-secondary rounded-2" onclick="openEditProductModal('${p.id}')"><i class="bi bi-pencil me-1"></i>Edit</button>
+                    <button class="btn btn-sm btn-outline-danger rounded-2" onclick="deleteProduct('${p.id}')"><i class="bi bi-trash me-1"></i>Delete</button>
+                </div>` : '';
+
+            const cartPayload = JSON.stringify({
+                id: p.id, title: p.title, seller: p.seller,
+                price: p.price, priceDisplay: p.priceDisplay, image: p.image
+            });
+
+            return `
+            <div class="col-12 col-md-6 col-lg-3" data-product-id="${p.id}">
+                <div class="card product-card border-0 h-100 shadow-sm">
+                    <div class="product-image-wrapper">
+                        <img src="${p.image}" alt="${p.title}" loading="lazy">
+                    </div>
+                    <div class="card-body p-3 d-flex flex-column justify-content-between">
+                        <div>
+                            <span class="badge badge-product-type mb-2">${p.category}</span>
+                            <h5 class="product-title fw-bold text-dark mb-1">${p.title}</h5>
+                            <p class="sold-by-label mb-2">Sold by ${p.seller}</p>
+                            <p class="product-description text-muted small">${p.description}</p>
+                        </div>
+                        <div class="mt-3">
+                            <div class="d-flex align-items-center justify-content-between gap-2">
+                                <span class="product-price fw-bold">${p.priceDisplay}</span>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-outline-secondary btn-sm rounded-2 px-2" title="Add to Cart" onclick='Cart.add(${cartPayload})'>
+                                        <i class="bi bi-bag-plus"></i>
+                                    </button>
+                                    <button class="btn btn-buy-now px-3 py-2 fw-medium rounded-2" onclick="showToast('Contact ${p.seller.replace(/'/g,"\\'")} to arrange the purchase.','info')">
+                                        Buy Now
+                                    </button>
+                                </div>
+                            </div>
+                            ${ownerControls}
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    window._refreshMarketplace = renderProducts;
+    renderProducts();
+}
