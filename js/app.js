@@ -148,6 +148,75 @@ function markActiveNavLink() {
 }
 
 /* ==========================
+    AUTH MODAL
+==========================*/
+
+let _authCallback = null;
+
+function openAuthModal(callback = null, showSignup = false) {
+    _authCallback = callback;
+    let modal = document.getElementById('auth-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'auth-modal';
+        modal.innerHTML = `
+        <div class="modal-backdrop" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;">
+            <div class="bg-white rounded-4 shadow-lg" style="width:100%;max-width:440px;overflow:hidden;">
+                <div class="modal-header-purple text-white p-4">
+                    <h5 class="fw-bold m-0" id="auth-modal-title">Log In to CampusConnect</h5>
+                    <button onclick="closeAuthModal()" style="background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;">&times;</button>
+                </div>
+                <div class="p-4">
+                    <div class="d-flex mb-4 border-bottom">
+                        <button class="btn p-0 me-4 pb-2 fw-semibold auth-tab-btn active" id="tab-login" onclick="switchAuthTab('login')" style="border:none;background:none;border-bottom:2px solid var(--brand-purple);">Log In</button>
+                        <button class="btn p-0 pb-2 fw-semibold auth-tab-btn" id="tab-signup" onclick="switchAuthTab('signup')" style="border:none;background:none;color:#64748b;">Sign Up</button>
+                    </div>
+                    <div id="auth-login-form">
+                        <div class="mb-3"><label class="form-label">Email</label>
+                            <input type="email" id="login-email" class="form-control rounded-3" placeholder="you@university.ac.ke"></div>
+                        <div class="mb-4"><label class="form-label">Password</label>
+                            <input type="password" id="login-pass" class="form-control rounded-3" placeholder="••••••••"></div>
+                        <button class="btn btn-purple w-100 py-2 fw-medium rounded-3" onclick="handleLogin()">Log In</button>
+                    </div>
+                    <div id="auth-signup-form" style="display:none;">
+                        <div class="mb-3"><label class="form-label">Full Name</label>
+                            <input type="text" id="signup-name" class="form-control rounded-3" placeholder="Jane Mwangi"></div>
+                        <div class="mb-3"><label class="form-label">Email</label>
+                            <input type="email" id="signup-email" class="form-control rounded-3" placeholder="you@university.ac.ke"></div>
+                        <div class="mb-4"><label class="form-label">Password</label>
+                            <input type="password" id="signup-pass" class="form-control rounded-3" placeholder="Min. 6 characters"></div>
+                        <button class="btn btn-purple w-100 py-2 fw-medium rounded-3" onclick="handleSignup()">Create Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        document.body.appendChild(modal);
+        modal.querySelector('.modal-backdrop').addEventListener('click', e => {
+            if (e.target === modal.querySelector('.modal-backdrop')) closeAuthModal();
+        });
+    }
+    modal.style.display = 'block';
+    if (showSignup) switchAuthTab('signup');
+}
+
+function closeAuthModal() {
+    const modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function switchAuthTab(tab) {
+    document.getElementById('auth-login-form').style.display  = tab === 'login'  ? 'block' : 'none';
+    document.getElementById('auth-signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+    document.getElementById('tab-login').style.borderBottom  = tab === 'login'  ? '2px solid var(--brand-purple)' : 'none';
+    document.getElementById('tab-login').style.color         = tab === 'login'  ? 'var(--brand-purple)' : '#64748b';
+    document.getElementById('tab-signup').style.borderBottom = tab === 'signup' ? '2px solid var(--brand-purple)' : 'none';
+    document.getElementById('tab-signup').style.color        = tab === 'signup' ? 'var(--brand-purple)' : '#64748b';
+    document.getElementById('auth-modal-title').textContent  = tab === 'login'
+        ? 'Log In to CampusConnect' : 'Join CampusConnect';
+}
+
+
+/* ==========================
     BOOT
 ==========================*/
 document.addEventListener('DOMContentLoaded', async () => {
