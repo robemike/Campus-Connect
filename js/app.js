@@ -215,6 +215,39 @@ function switchAuthTab(tab) {
         ? 'Log In to CampusConnect' : 'Join CampusConnect';
 }
 
+function handleLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const pass  = document.getElementById('login-pass').value;
+    if (!email || !pass) { showToast('Please fill in all fields.', 'error'); return; }
+    const accounts = JSON.parse(localStorage.getItem('cc_accounts') || '{}');
+    if (accounts[email] && accounts[email].password === pass) {
+        Auth.setUser({ name: accounts[email].name, email });
+        closeAuthModal();
+        showToast(`Welcome back, ${accounts[email].name}! 👋`, 'success');
+        if (_authCallback) { const cb = _authCallback; _authCallback = null; cb(); }
+        else location.reload();
+    } else {
+        showToast('Incorrect email or password.', 'error');
+    }
+}
+
+function handleSignup() {
+    const name  = document.getElementById('signup-name').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const pass  = document.getElementById('signup-pass').value;
+    if (!name || !email || !pass) { showToast('Please fill in all fields.', 'error'); return; }
+    if (pass.length < 6) { showToast('Password must be at least 6 characters.', 'error'); return; }
+    const accounts = JSON.parse(localStorage.getItem('cc_accounts') || '{}');
+    if (accounts[email]) { showToast('An account with this email already exists.', 'error'); return; }
+    accounts[email] = { name, password: pass };
+    localStorage.setItem('cc_accounts', JSON.stringify(accounts));
+    Auth.setUser({ name, email });
+    closeAuthModal();
+    showToast(`Welcome to CampusConnect, ${name}! 🎉`, 'success');
+    if (_authCallback) { const cb = _authCallback; _authCallback = null; cb(); }
+    else location.reload();
+}
+
 
 /* ==========================
     BOOT
